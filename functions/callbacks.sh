@@ -55,5 +55,7 @@ do_strip() {
 }
 
 do_after_success() {
-  hab pkg promote ${pkg_origin}/${pkg_name}/${pkg_version}/${pkg_release} stable
+  source results/last_build.env
+  hab pkg upload ${pkg_artifact}
+  hab pkg promote ${pkg_ident} stable
 }
