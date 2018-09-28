@@ -53,3 +53,7 @@ do_strip() {
   rm -rf ${pkg_prefix}/bin/pip*
   return $?
 }
+
+do_after_success() {
+  hab pkg promote ${pkg_origin}/${pkg_name}/${pkg_version}/${pkg_release} stable
+}
