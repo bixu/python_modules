@@ -26,7 +26,7 @@ do_setup_environment() {
 do_prepare() {
   python -m venv "${pkg_prefix}"
   source "${pkg_prefix}/bin/activate"
-  pip install --upgrade pip
+  pip install --upgrade --quiet --no-cache-dir pip
   return $?
 }
 
