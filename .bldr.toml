@@ -1,0 +1,36 @@
+[botocore]
+plan_path = "plans/botocore"
+paths = [
+  "plans/botocore/*",
+  "functions/*"
+]
+[Cython]
+plan_path = "plans/Cython"
+paths = [
+  "plans/Cython/*",
+  "functions/*"
+]
+[numpy]
+plan_path = "plans/numpy"
+paths = [
+  "plans/numpy/*",
+  "functions/*"
+]
+[pandas]
+plan_path = "plans/pandas"
+paths = [
+  "plans/pandas/*",
+  "functions/*"
+]
+[scipy]
+plan_path = "plans/scipy"
+paths = [
+  "plans/scipy/*",
+  "functions/*"
+]
+[tensorflow]
+plan_path = "plans/tensorflow"
+paths = [
+  "plans/tensorflow/*",
+  "functions/*"
+]
