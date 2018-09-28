@@ -1,7 +1,7 @@
 pkg_maintainer="smartB Engineering <dev@smartb.eu>"
 pkg_lib_dirs=(lib)
-python_major_version="3.6"
-python_minor_version="3"
+python_major_version="3.7"
+python_minor_version="0"
 pkg_build_deps=(
   core/inetutils
   core/curl
