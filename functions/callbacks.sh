@@ -1,4 +1,4 @@
-pkg_maintainer="smartB Engineering <dev@smartb.eu>"
+pkg_maintainer="Blake Irvin <blakeirvin@me.com>"
 pkg_lib_dirs=(lib)
 python_major_version="3.7"
 python_minor_version="0"
