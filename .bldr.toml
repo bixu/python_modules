@@ -34,3 +34,9 @@ paths = [
   "plans/tensorflow/*",
   "functions/*"
 ]
+[tensorflow-gpu]
+plan_path = "plans/tensorflow-gpu"
+paths = [
+  "plans/tensorflow-gpu/*",
+  "functions/*"
+]
