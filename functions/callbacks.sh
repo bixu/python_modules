@@ -57,6 +57,6 @@ do_strip() {
 }
 
 do_after_success() {
-  hab pkg upload "./results/*.hart"
+  hab pkg upload "/src/results/*.hart"
   hab pkg promote ${PKG_IDENT} stable
 }
