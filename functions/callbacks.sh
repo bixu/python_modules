@@ -57,6 +57,8 @@ do_strip() {
 }
 
 do_after_success() {
+  build_line "keys present for build environment:"
+  find / -name *.pub
   hab pkg upload "${pkg_artifact}"
   hab pkg promote ${PKG_IDENT} stable
 }
