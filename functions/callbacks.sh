@@ -55,7 +55,7 @@ do_strip() {
 }
 
 do_after_success() {
-  source results/last_build.env
+  source results/pre_build.env
   hab pkg upload ${pkg_artifact}
   hab pkg promote ${pkg_ident} stable
 }
