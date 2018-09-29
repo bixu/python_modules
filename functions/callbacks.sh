@@ -20,7 +20,7 @@ do_setup_environment() {
   push_buildtime_env LD_LIBRARY_PATH "$(pkg_path_for core/gcc)/lib"
   push_buildtime_env LD_LIBRARY_PATH "$(pkg_path_for core/libffi)/lib"
   push_buildtime_env LD_LIBRARY_PATH "$(pkg_path_for core/pcre)/lib"
-  
+
   set_buildtime_env  PKG_IDENT       "${pkg_origin}/${pkg_name}/${pkg_version}/${pkg_release}"
   return $?
 }
@@ -57,6 +57,6 @@ do_strip() {
 }
 
 do_after_success() {
-  hab pkg upload "/src/results/*.hart"
+  hab pkg upload "${pkg_artifact}"
   hab pkg promote ${PKG_IDENT} stable
 }
