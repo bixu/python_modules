@@ -7,9 +7,9 @@ python_major_version="3.7"
 python_minor_version="0"
 # shellcheck disable=SC2034
 pkg_build_deps=(
-  core/inetutils
   core/curl
   core/gcc
+  core/inetutils
   core/jq-static
   core/libffi
   core/python/"${python_major_version}"."${python_minor_version}"
