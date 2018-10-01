@@ -1,6 +1,6 @@
 pkg_origin=pip
 pkg_name=tensorflow-gpu
-pkg_version=1.4.1
+pkg_version=1.11.0
 source $PLAN_CONTEXT/../../functions/callbacks.sh
 pkg_build_deps+=(core/jq-static)
 
