@@ -55,9 +55,3 @@ do_strip() {
   rm -rf ${pkg_prefix}/bin/pip*
   return $?
 }
-
-do_after_success() {
-  echo "${PUBLIC_SIGNING_KEY}" > /hab/cache/keys/pip-20180227164803.pub
-  hab pkg upload "${pkg_artifact}"
-  hab pkg promote ${PKG_IDENT} stable
-}
