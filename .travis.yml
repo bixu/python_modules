@@ -1,4 +1,8 @@
 language: bash
 sudo: required
+cache:
+  directories:
+  - /hab/cache
+  - /hab/pkgs
 script:
 - bash "${TRAVIS_BUILD_DIR}"/travis.sh
