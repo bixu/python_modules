@@ -27,8 +27,8 @@ build_all() {
     hab pkg upload results/"${pkg_artifact}"
     #shellcheck disable=SC2154
     hab pkg promote "${pkg_ident}" stable
-    return $?
   done
+  return $?
 }
 
 main
