@@ -8,7 +8,7 @@ main() {
 }
 
 install_habitat() {
-  curl "https://raw.githubusercontent.com/habitat-sh/habitat/master/components/hab/install.sh" | bash
+  curl "https://raw.githubusercontent.com/habitat-sh/habitat/master/components/hab/install.sh" | sudo bash
   hab origin key download --secret --auth=HAB_AUTH_TOKEN pip
   hab origin key download --auth=HAB_AUTH_TOKEN pip
   return $?
