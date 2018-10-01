@@ -17,7 +17,7 @@ install_habitat() {
 build_all() {
   for plan in plans/*
   do
-    pkg_origin="$(grep pkg_origin= plans/numpy/plan.sh | cut -d= -f2)"
+    pkg_origin="$(grep pkg_origin= ${plan}/plan.sh | cut -d= -f2)"
     #shellcheck disable=SC2034
     HAB_ORIGIN="${pkg_origin}"
     export HAB_ORIGIN
