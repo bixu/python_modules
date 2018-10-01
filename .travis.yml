@@ -1,4 +1,3 @@
 language: bash
-sudo: required
 script:
 - bash "${TRAVIS_BUILD_DIR}"/travis.sh
