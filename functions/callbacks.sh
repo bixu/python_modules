@@ -7,6 +7,7 @@ python_major_version="3.7"
 python_minor_version="0"
 # shellcheck disable=SC2034
 pkg_build_deps=(
+  bixu/cacher
   core/curl
   core/gcc
   core/inetutils
