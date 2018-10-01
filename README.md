@@ -1,10 +1,3 @@
 [![Build Status](https://travis-ci.org/bixu/python_modules.svg?branch=master)](https://travis-ci.org/bixu/python_modules)
-# Habitat package: python_modules
 
-## Description
-
-Provide a brief description of the `python_modules` plan / purpose.
-
-## Usage
-
-Describe the general usage for the `python_modules` plan
+This repository is an effort to automatically re-package certain very large and/or complex Python modules as Habitat packages, with an eye towards speeding up operations like `pip install` for Habitat-packaged Python apps that have very large dependencies.
