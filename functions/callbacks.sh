@@ -15,6 +15,12 @@ pkg_build_deps=(
   core/python/"${python_major_version}"."${python_minor_version}"
 )
 
+pkg_version() {
+  export LC_ALL=en_US LANG=en_US
+  # shellcheck disable=SC2154
+  pip search --disable-pip-version-check "${pkg_name}" | grep "^${pkg_name} " | cut -d\( -f2 | cut -d\) -f1
+}
+
 do_before() {
   update_pkg_version
 }
