@@ -19,7 +19,8 @@ build_all() {
   do
     pkg_origin="$(grep pkg_origin= plans/numpy/plan.sh | cut -d= -f2)"
     #shellcheck disable=SC2034
-    local HAB_ORIGIN="${pkg_origin}"
+    HAB_ORIGIN="${pkg_origin}"
+    export HAB_ORIGIN
     hab pkg build "${plan}"
     return $?
   done
