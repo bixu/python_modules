@@ -22,6 +22,11 @@ build_all() {
     HAB_ORIGIN="${pkg_origin}"
     export HAB_ORIGIN
     hab pkg build "${plan}"
+    source results/last_build.env
+    #shellcheck disable=SC2154
+    hab pkg upload results/"${pkg_artifact}"
+    #shellcheck disable=SC2154
+    hab pkg promote "${pkg_ident}" stable
     return $?
   done
 }
