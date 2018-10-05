@@ -25,4 +25,5 @@ do_build() {
     | jq 'del(.run_requires[0].requires[] | select(startswith("enum34")))' \
     | jq 'del(.test_requires[0].requires[] | select(startswith("enum34")))' > /tmp/metadata.json
   mv /tmp/metadata.json ${pip_prefix}/${pkg_name}-${pkg_version}.dist-info/metadata.json
+  return $?
 }
