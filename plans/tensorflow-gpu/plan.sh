@@ -7,7 +7,6 @@ python_major_version="3.6"
 python_minor_version="6"
 pkg_build_deps=(
   bixu/cacher
-  core/cuda
   core/curl
   core/gcc
   core/inetutils
