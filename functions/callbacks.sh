@@ -46,15 +46,25 @@ do_prepare() {
 }
 
 do_build() {
-  return 0
+  pip install --quiet --no-cache-dir "${pkg_name}==${pkg_version}"
+  return $?
+}
+
+do_check() {
+  module_name=$(echo -n ${pkg_name} | cut -d- -f1) # python modules normally are imported by whatenver name comes before a `-`
+  build_line "Attempting import of \`${module_name}\` Python module"
+  if python -c "import ${module_name}; print(${module_name}.__version__)" > /dev/null
+  then
+    build_line "Import of  \`${module_name}\` Python module successful"
+    return 0
+  else
+    build_line "Import of  \`${module_name}\` module failed"
+    return 1
+  fi
 }
 
 do_install() {
-  pip install --quiet --no-cache-dir "${pkg_name}==${pkg_version}"
-  module_version=$(python -c "import ${pkg_name}; print(${pkg_name}.__version__)")
-  local module_version
-  build_line "${pkg_name} version: ${module_version}"
-  return $?
+  return 0
 }
 
 do_strip() {
