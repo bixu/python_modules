@@ -1,0 +1,28 @@
+version: 2
+jobs:
+  build:
+    machine:
+      image: ubuntu-1604:201903-01
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install Habitat
+          command: |
+            curl "https://raw.githubusercontent.com/habitat-sh/habitat/master/components/hab/install.sh" | sudo bash
+            hab origin key download --secret --auth="${HAB_AUTH_TOKEN}" pip
+            hab origin key download --auth="${HAB_AUTH_TOKEN}" pip
+
+      - run:
+          name: Build Plans
+          command: |
+              for plan in plans/*
+              do
+                pkg_origin="$(grep pkg_origin= ${plan}/plan.sh | cut -d= -f2)"
+                export HAB_ORIGIN="${pkg_origin}"
+                hab pkg build "${plan}"
+                source results/last_build.env
+                hab pkg upload results/"${pkg_artifact}"
+                hab pkg promote "${pkg_ident}" stable
+              done
