@@ -29,9 +29,12 @@ do_before() {
 do_setup_environment() {
   # shellcheck disable=SC2154
   push_runtime_env   PYTHONPATH      "${pkg_prefix}/lib/python${python_major_version}/site-packages"
+
+  HAB_ENV_LD_LIBRARY_PATH_SEPARATOR=:
   push_buildtime_env LD_LIBRARY_PATH "$(pkg_path_for core/gcc)/lib"
   push_buildtime_env LD_LIBRARY_PATH "$(pkg_path_for core/libffi)/lib"
   push_buildtime_env LD_LIBRARY_PATH "$(pkg_path_for core/pcre)/lib"
+
   # shellcheck disable=SC2154
   set_buildtime_env  PKG_IDENT       "${pkg_origin}/${pkg_name}/${pkg_version}/${pkg_release}"
   return $?
