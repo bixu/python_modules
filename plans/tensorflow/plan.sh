@@ -1,6 +1,5 @@
 pkg_origin=pip
 pkg_name=tensorflow
-pkg_version=1.11.0
 source $PLAN_CONTEXT/../../functions/callbacks.sh
 python_major_version="3.6"
 python_major_version_stripped="$(echo -n ${python_major_version} | tr -d .)"

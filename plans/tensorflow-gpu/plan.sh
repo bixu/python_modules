@@ -1,7 +1,6 @@
 pkg_origin=pip
 pkg_name=tensorflow-gpu
-module_name=tensorflow_gpu
-pkg_version=1.11.0
+module_name="tensorflow_gpu"
 source $PLAN_CONTEXT/../../functions/callbacks.sh
 python_major_version="3.6"
 python_major_version_stripped="$(echo -n ${python_major_version} | tr -d .)"
