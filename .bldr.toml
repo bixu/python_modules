@@ -1,39 +1,80 @@
+[bcrypt]
+plan_path = "plans/bcrypt"
+paths = [
+  "plans/bcrypt/*",
+  "functions/*"
+]
+
 [botocore]
 plan_path = "plans/botocore"
 paths = [
   "plans/botocore/*",
   "functions/*"
 ]
+
+[cffi]
+plan_path = "plans/cffi"
+paths = [
+  "plans/cffi/*",
+  "functions/*"
+]
+
 [Cython]
 plan_path = "plans/Cython"
 paths = [
   "plans/Cython/*",
   "functions/*"
 ]
+
+[grpcio]
+plan_path = "plans/grpcio"
+paths = [
+  "plans/grpcio/*",
+  "functions/*"
+]
+
 [numpy]
 plan_path = "plans/numpy"
 paths = [
   "plans/numpy/*",
   "functions/*"
 ]
+
 [pandas]
 plan_path = "plans/pandas"
 paths = [
   "plans/pandas/*",
   "functions/*"
 ]
+
+[scikit-learn]
+plan_path = "plans/scikit-learn"
+paths = [
+  "plans/scikit-learn/*",
+  "functions/*"
+]
+
 [scipy]
 plan_path = "plans/scipy"
 paths = [
   "plans/scipy/*",
   "functions/*"
 ]
+
+[six]
+plan_path = "plans/six"
+paths = [
+  "plans/six/*",
+  "functions/*"
+]
+
 [tensorflow]
 plan_path = "plans/tensorflow"
 paths = [
   "plans/tensorflow/*",
   "functions/*"
 ]
+
 [tensorflow-gpu]
 plan_path = "plans/tensorflow-gpu"
 paths = [
