@@ -27,6 +27,13 @@ pkg_version() {
 
 do_before() {
   update_pkg_version
+  if hab pkg install ${pkg_origin}/${pkg_name}/${pkg_version} &> /dev/null
+  then
+    build_line "${pkg_origin}/${pkg_name}/${pkg_version} has already been"
+    build_line "vendored to Builder. See :"
+    build_line "  https://bldr.habitat.sh/#/pkgs/${pkg_origin}/${pkg_name}"
+    exit_with "" 0
+  fi
 }
 
 do_setup_environment() {
@@ -43,11 +50,29 @@ do_setup_environment() {
   return $?
 }
 
+_record_pkg_metadata() {
+  echo "export pkg_origin=$pkg_origin
+export pkg_name=$pkg_name
+export pkg_version=$pkg_version
+export pkg_release=$pkg_release" > '/src/pkg.env'
+return $?
+}
+
+_promote_pkg() {
+  source '/src/pkg.env'
+  hab origin key download "$pkg_origin" --secret
+  hab origin key download "$pkg_origin"
+  hab pkg upload "/src/results/$pkg_origin-$pkg_name-$pkg_version-$pkg_release-x86_64-linux.hart"
+  hab pkg promote "$pkg_origin/$pkg_name/$pkg_version/$pkg_release" $1
+  return $?
+}
+
 do_prepare() {
   python -m venv "${pkg_prefix}"
   # shellcheck disable=SC1090
   source "${pkg_prefix}/bin/activate"
   pip install --upgrade --quiet --no-cache-dir "pip"
+  _record_pkg_metadata
   return $?
 }
 
@@ -57,9 +82,8 @@ do_build() {
 }
 
 do_check() {
-  module_name=$(echo -n ${pkg_name} | cut -d- -f1) # python modules normally
-                                                   # are imported by whatever
-                                                   # prefix comes before a `-`
+  # python modules are normally imported by whatever prefix comes before a `-`
+  module_name=$(echo -n ${pkg_name} | cut -d- -f1)
   build_line "Attempting import of \`${module_name}\` Python module"
   if python -c "import ${module_name}; print(${module_name}.__version__)" \
     > /dev/null
@@ -89,9 +113,7 @@ do_strip() {
   return $?
 }
 
-current_pypi_version() {
-  local module=$1
-  pip search --disable-pip-version-check ${module} \
-    | grep "^${module} " \
-    | cut -d\( -f2 | cut -d\) -f1
+do_after_success() {
+  _promote_pkg "stable"
+  return $?
 }

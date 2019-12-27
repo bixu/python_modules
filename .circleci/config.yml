@@ -16,7 +16,7 @@ jobs:
             hab origin key download --auth="${HAB_AUTH_TOKEN}" pip
       - run:
           name: Build Plans
-          command: sudo .circleci/build.sh
+          command: .circleci/build.sh
 workflows:
   version: 2
   commit-workflow:
