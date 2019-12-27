@@ -88,3 +88,10 @@ do_strip() {
   rm -rf ${pkg_prefix}/bin/pip*
   return $?
 }
+
+current_pypi_version() {
+  local module=$1
+  pip search --disable-pip-version-check ${module} \
+    | grep "^${module} " \
+    | cut -d\( -f2 | cut -d\) -f1
+}
