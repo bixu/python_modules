@@ -23,10 +23,12 @@ pkg_version() {
   pip search --disable-pip-version-check "${pkg_name}" \
     | grep "^${pkg_name} " \
     | cut -d\( -f2 | cut -d\) -f1
+  return $?
 }
 
 do_before() {
   update_pkg_version
+
   if hab pkg install ${pkg_origin}/${pkg_name}/${pkg_version} &> /dev/null
   then
     build_line "${pkg_origin}/${pkg_name}/${pkg_version} has already been"
