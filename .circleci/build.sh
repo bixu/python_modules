@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 source "functions/callbacks.sh"
 
 for plan in plans/*
